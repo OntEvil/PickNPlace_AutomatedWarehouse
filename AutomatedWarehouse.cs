@@ -77,11 +77,16 @@ namespace Controllers
                     targetPosition.Value = 55;
                     state = State.State0;
                 }
+                else if(pickupLocation == targetPosition.Value)
+                {
+                    warehouseStorage[pickupLocation] = 0;
+                    state = State.State13;//if picking up from the same place skip a state
+                }
                 else
                 {
                     targetPosition.Value = pickupLocation;
                     warehouseStorage[pickupLocation] = 0;
-                    state = State.State12;
+                    state = State.State12; 
                 }
                 
             }
